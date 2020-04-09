@@ -21,11 +21,13 @@ namespace Contacts
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<ContactPersons> contacts = new List<ContactPersons> { };
+
         public MainWindow()
         {
             InitializeComponent();
 
-           ReadDatabase();
+            ReadDatabase();
         }
 
         private void NewContactButton_Click(object sender, RoutedEventArgs e)
@@ -38,19 +40,46 @@ namespace Contacts
 
         void ReadDatabase()
         {
-            List<ContactPersons> contacts;
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {
                 connection.CreateTable<ContactPersons>();
-                contacts = connection.Table<ContactPersons>().ToList();
+                contacts = (connection.Table<ContactPersons>().ToList()).OrderBy(contact => contact.Name).ToList();
             }
-
+             
             ContactsGrid.ItemsSource = contacts;
-            
-            if(contacts != null)
+
+            if (contacts != null)
             {
                 ContactsListView.ItemsSource = contacts;
             }
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = (sender as TextBox).Text.ToUpper();
+
+            List<ContactPersons> filteredContactList = new List<ContactPersons> { };
+
+            //enumerate through and see if the searchtext is contained in any member of the contacts list
+            foreach (ContactPersons contact in contacts)
+            {
+                if (contact.Name.ToUpper().Contains(searchText))
+                { 
+                    filteredContactList.Add(contact);
+                }
+            }
+
+            //Same above code in LINQ query syntax
+            filteredContactList = contacts.Where(contact => contact.Name.ToUpper().Contains(searchText)).ToList();
+
+            //Same above code in LINQ method/function syntax
+            filteredContactList = (from c in contacts
+                                   where c.Name.ToUpper().Contains(searchText)
+                                   orderby c.Name
+                                   select c).ToList();
+
+            ContactsListView.ItemsSource = filteredContactList;
+            ContactsGrid.ItemsSource = filteredContactList;
         }
     }
 }

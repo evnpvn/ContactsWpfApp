@@ -1,0 +1,8 @@
+Allow Update and delete of contacts
+
+If a contact is selected Open a new dialog window
+	Make this a copy of the existing dialog window.
+
+	Keep all the same fields as we will pass the contact + contact details in the constructor of the new window
+	Add delete and update buttons in the window
+	
