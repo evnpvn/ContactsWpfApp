@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Contacts"
         mc:Ignorable="d"
-        Title="Contacts" Height="350" Width="500">
+        Title="Contacts" Height="650" Width="500">
     <Grid>
         <StackPanel Margin="10">
             <Button x:Name="newContactButton" Content="New Contact" Click="NewContactButton_Click"/>
         </StackPanel>
-        <DataGrid x:Name ="ContactsGrid" Margin="40" AutoGenerateColumns="False" CanUserAddRows="False">
+        <DataGrid x:Name ="ContactsGrid" Margin="10,40,0,0" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalAlignment="Left" VerticalAlignment="Top" Height="250" Width="300">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="RecID"/>
                 <DataGridTextColumn Binding="{Binding Path=Name}" Header="Name"/>
@@ -18,5 +18,18 @@
                 <DataGridTextColumn Binding="{Binding Path=Phone}" Header="Phone number"/>
             </DataGrid.Columns>
         </DataGrid>
+        <ListView x:Name="ContactsListView" Margin="10,300,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="250" Width="300">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" FontSize="15" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Email}" FontSize="12" Foreground="DodgerBlue"/>
+                        <TextBlock Text="{Binding Phone}" FontSize="12"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
     </Grid>
 </Window>
