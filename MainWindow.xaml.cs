@@ -45,9 +45,7 @@ namespace Contacts
                 connection.CreateTable<ContactPersons>();
                 contacts = (connection.Table<ContactPersons>().ToList()).OrderBy(contact => contact.Name).ToList();
             }
-             
-            ContactsGrid.ItemsSource = contacts;
-
+           
             if (contacts != null)
             {
                 ContactsListView.ItemsSource = contacts;
@@ -79,7 +77,12 @@ namespace Contacts
                                    select c).ToList();
 
             ContactsListView.ItemsSource = filteredContactList;
-            ContactsGrid.ItemsSource = filteredContactList;
+        }
+
+        private void ContactsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateContactWindow updateContactWindow = new UpdateContactWindow();
+            updateContactWindow.ShowDialog();
         }
     }
 }
