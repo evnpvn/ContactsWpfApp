@@ -38,6 +38,15 @@ namespace Contacts
             ReadDatabase();
         }
 
+        private void ContactsListView_Selected(object sender, RoutedEventArgs e)
+        {
+            ContactPersons contact = ContactsListView.SelectedItem as ContactPersons;
+            UpdateContactWindow updateContactWindow = new UpdateContactWindow(contact);
+            updateContactWindow.ShowDialog();
+
+            ReadDatabase();
+        }
+
         public void ReadDatabase()
         {
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
@@ -78,13 +87,5 @@ namespace Contacts
 
             ContactsListView.ItemsSource = filteredContactList;
         }
-
-        private void ContactsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ContactPersons contact = ContactsListView.SelectedItem as ContactPersons;
-            UpdateContactWindow updateContactWindow = new UpdateContactWindow(contact);
-            updateContactWindow.ShowDialog();
-        }
-
     }
 }

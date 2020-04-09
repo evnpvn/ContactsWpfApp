@@ -20,7 +20,7 @@ namespace Contacts
     /// </summary>
     public partial class UpdateContactWindow : Window
     {
-        ContactPersons contact;
+        readonly ContactPersons contact;
         public UpdateContactWindow(ContactPersons selectedContact)
         {   
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace Contacts
             UpdatePhonenumBox.Text = contact.Phone;
         }
 
-        private void updateButton_Click(object sender, RoutedEventArgs e)
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             contact.Name = UpdateNameBox.Text;
             contact.Email = UpdateEmailBox.Text;
@@ -46,7 +46,7 @@ namespace Contacts
         }
             
 
-        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {

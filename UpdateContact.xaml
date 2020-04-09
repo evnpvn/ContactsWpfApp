@@ -11,8 +11,8 @@
             <TextBox x:Name="UpdateNameBox"       Margin="0,0,0,5"/>
             <TextBox x:Name="UpdateEmailBox"      Margin="0,0,0,5"/>
             <TextBox x:Name="UpdatePhonenumBox"   Margin="0,0,0,5"/>
-            <Button  x:Name="updateButton"  Margin="0,0,0,5" Background="LightYellow" Content="Update" Click="updateButton_Click" />
-            <Button  x:Name="deleteButton"  Margin="0,0,0,5" Background="IndianRed" Content="Delete" Click="deleteButton_Click"/>
+            <Button  x:Name="updateButton"  Margin="0,0,0,5" Background="LightYellow" Content="Update" Click="UpdateButton_Click" />
+            <Button  x:Name="deleteButton"  Margin="0,0,0,5" Background="IndianRed" Content="Delete" Click="DeleteButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>

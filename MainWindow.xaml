@@ -12,7 +12,7 @@
             <TextBox x:Name="SearchBox" Margin="0,10,0,0"
                      TextChanged="SearchBox_TextChanged"/>
         </StackPanel>
-        <ListView x:Name="ContactsListView" Margin="10,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="250" Width="300" SelectionChanged="ContactsListView_SelectionChanged">
+        <ListView x:Name="ContactsListView" Margin="10,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="250" Width="300" Selected="ContactsListView_Selected">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <StackPanel>
