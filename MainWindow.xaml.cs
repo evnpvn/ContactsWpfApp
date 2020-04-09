@@ -38,7 +38,7 @@ namespace Contacts
             ReadDatabase();
         }
 
-        void ReadDatabase()
+        public void ReadDatabase()
         {
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))
             {
@@ -81,8 +81,10 @@ namespace Contacts
 
         private void ContactsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateContactWindow updateContactWindow = new UpdateContactWindow();
+            ContactPersons contact = ContactsListView.SelectedItem as ContactPersons;
+            UpdateContactWindow updateContactWindow = new UpdateContactWindow(contact);
             updateContactWindow.ShowDialog();
         }
+
     }
 }

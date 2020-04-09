@@ -8,9 +8,9 @@
         Title="Update Contact" Height="300" Width="300">
     <Grid>
         <StackPanel Margin="10">
-            <TextBox x:Name="nameBox"       Margin="0,0,0,5"/>
-            <TextBox x:Name="emailBox"      Margin="0,0,0,5"/>
-            <TextBox x:Name="phonenumBox"   Margin="0,0,0,5"/>
+            <TextBox x:Name="UpdateNameBox"       Margin="0,0,0,5"/>
+            <TextBox x:Name="UpdateEmailBox"      Margin="0,0,0,5"/>
+            <TextBox x:Name="UpdatePhonenumBox"   Margin="0,0,0,5"/>
             <Button  x:Name="updateButton"  Margin="0,0,0,5" Background="LightYellow" Content="Update" Click="updateButton_Click" />
             <Button  x:Name="deleteButton"  Margin="0,0,0,5" Background="IndianRed" Content="Delete" Click="deleteButton_Click"/>
         </StackPanel>
