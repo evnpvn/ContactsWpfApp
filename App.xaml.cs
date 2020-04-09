@@ -13,8 +13,8 @@ namespace Contacts
     /// </summary>
     public partial class App : Application
     {
-        static string databaseName = "Contacts.db";
-        static string folderPath = Environment.CurrentDirectory;
+        static readonly string databaseName = "Contacts.db";
+        static readonly string folderPath = Environment.CurrentDirectory;
         public static string databasePath = System.IO.Path.Combine(folderPath, databaseName);
 
     }
