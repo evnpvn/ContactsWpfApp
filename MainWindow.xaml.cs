@@ -38,15 +38,18 @@ namespace Contacts
             ReadDatabase();
         }
 
-        private void ContactsListView_Selected(object sender, RoutedEventArgs e)
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            ContactPersons contact = ContactsListView.SelectedItem as ContactPersons;
-            UpdateContactWindow updateContactWindow = new UpdateContactWindow(contact);
-            updateContactWindow.ShowDialog();
+            var item = sender as ListViewItem;
+            if (item != null && item.IsSelected)
+            {
+                ContactPersons contact = ContactsListView.SelectedItem as ContactPersons; //i could probably swap item with selected item here
+                UpdateContactWindow updateContactWindow = new UpdateContactWindow(contact);
+                updateContactWindow.ShowDialog();
 
-            ReadDatabase();
+                ReadDatabase();
+            }
         }
-
         public void ReadDatabase()
         {
             using (SQLiteConnection connection = new SQLiteConnection(App.databasePath))

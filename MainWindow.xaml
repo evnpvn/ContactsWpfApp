@@ -12,9 +12,14 @@
             <TextBox x:Name="SearchBox" Margin="0,10,0,0"
                      TextChanged="SearchBox_TextChanged"/>
         </StackPanel>
-        <ListView x:Name="ContactsListView" Margin="10,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="250" Width="300" Selected="ContactsListView_Selected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
+        <ListView x:Name="ContactsListView" Margin="10,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="250" Width="300">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
                 <StackPanel>
                     <TextBlock Text="{Binding Name}" FontSize="15" FontWeight="Bold"/>
                     <TextBlock Text="{Binding Email}" FontSize="12" Foreground="DodgerBlue"/>
