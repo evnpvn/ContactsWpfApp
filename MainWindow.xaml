@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Contacts"
+        xmlns:uc="clr-namespace:Contacts.Controls"
         mc:Ignorable="d"
         Title="Contacts" Height="370" Width="340">
     <Grid>
@@ -20,12 +21,8 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                <StackPanel>
-                    <TextBlock Text="{Binding Name}" FontSize="15" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding Email}" FontSize="12" Foreground="DodgerBlue"/>
-                    <TextBlock Text="{Binding Phone}" FontSize="12"/>
-                </StackPanel>
-            </DataTemplate>
+                    <uc:ContactsControl Contact="{Binding}"/>
+                </DataTemplate>
         </ListView.ItemTemplate>
         </ListView>   
     </Grid>
