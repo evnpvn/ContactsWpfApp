@@ -13,9 +13,22 @@ namespace Contacts
     /// </summary>
     public partial class App : Application
     {
-        static readonly string databaseName = "Contacts.db";
-        static readonly string folderPath = Environment.CurrentDirectory;
-        public static string databasePath = System.IO.Path.Combine(folderPath, databaseName);
+        //!Fields
+        public const string dbName = "SqliteDatabaseFileName";
+        public static readonly string folderPath = Environment.CurrentDirectory;
+        public static string databasePath = System.IO.Path.Combine(folderPath, GetConnectionStringByName(dbName));
 
+        //!Methods
+        //gets only the specified connection string
+        public static string GetConnectionStringByName(string name)
+        {
+            ConnectionStringSettings connectionStringSettings = ConfigurationManager.ConnectionStrings[name];
+
+            if (connectionStringSettings != null)
+            {
+                return connectionStringSettings.ConnectionString;
+            }
+            else return null;
+        }
     }
 }
